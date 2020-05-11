@@ -40,7 +40,7 @@ function Footer() {
 
 function BasicAnimations() {
 	return (
-		<div classNameName="animation-container">
+		<div className="animation-container">
 			<p id="fade-animation">Fading animation</p>
 			<p id="rotate-animation">Rotate animation</p>
 			<p id="slidein-animation">Slidein animation</p>
@@ -48,37 +48,16 @@ function BasicAnimations() {
 	);
 }
 
-/*
 export default function App() {
   return (
   	<React.Fragment>
-	    <div classNameName="container">
-	      <div classNameName="topbar"> <TopBar /> </div>
-	      <div classNameName="courosel"> <Courosel /> </div>
-	      <div classNameName="content"> <Content /> </div>
-	      <div classNameName="ads"> <Ads /> </div>
-	      <div classNameName="footer"> <Footer /> </div>
+	    <div className="container">
+	      <div className="topbar"> <TopBar /> </div>
+	      <div className="courosel"> <Courosel /> </div>
+	      <div className="content"> <Content /> </div>
+	      <div className="ads"> <Ads /> </div>
+	      <div className="footer"> <Footer /> </div>
 	    </div>
 	  </React.Fragment>
   );
-}
-*/
-
-export default function App() {
-	const wrapperRef = React.createRef();
-	return (
-		<div ref={wrapperRef} className="wrapper">
-			<div className="nav">
-				<BsReverseLayoutTextSidebarReverse 
-					className="nav-icon"
-					onClick={() => {
-						wrapperRef.current.classList.toggle("is-nav-open");
-					}}
-				/>
-				<div className="nav-body">
-					sidebar content
-				</div>
-			</div>
-		</div>
-	);
 }
