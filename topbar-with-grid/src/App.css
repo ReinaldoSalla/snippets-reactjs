@@ -1,0 +1,92 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "topbar  topbar"
+    "courosel courosel"
+    "content  ads"
+    "footer   footer";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px; 
+}
+
+.topbar {
+  grid-area: topbar;
+  background-color: rgba(25, 25, 25, 1);
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.courosel {
+  grid-area: courosel;
+}
+
+.content {
+  grid-area: content;
+}
+
+.ads {
+  grid-area: ads;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.top-bar-contents {
+  display: grid;
+  grid-template-areas:
+    "sidebar-icon company-logo input-search login-icon cart-icon";
+  align-items: center;
+  justify-content: space-around;
+  grid-gap: 5px;
+  padding: 2px;
+  margin: 2px;
+
+}
+
+.sidebar-icon {
+  grid-area: sidebar-icon;
+}
+
+.company-logo {
+  grid-area: company-logo;
+}
+
+.input-search {
+  grid-area: input-search;
+}
+
+.login-icon {
+  grid-area: login-icon;
+}
+
+.cart-icon {
+  grid-area: cart-icon;
+}
+
+.company-logo {
+  color: white;
+  font-size: 20px;
+}
+
+
+.input-search {
+  border-radius: 20px;
+  padding: 8px;
+  border: 10px;
+  width: 275px;
+  height: 25px;
+  background-color: rgba(235, 235, 235, 1);
+}
+
+
+.sidebar-icon, .login-icon, .cart-icon {
+  color: white;
+  font-size: 40px;
+}
+
+.icon {
+  color: blue;
+  font-size: 40px;
+}

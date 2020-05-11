@@ -1,0 +1,25 @@
+body {
+	background-color: rgba(240, 240, 240, 0.5);
+}
+
+.icon {
+	font-size: 35px;
+}
+
+.icon:hover {
+	color: blue;
+}
+
+.list-off {
+	left: -100px;
+	position: absolute;
+	transition-duration: 800ms;
+	transition-timing-function: ease-in-out;
+}
+
+.list-on {
+	left: 50px;
+	position: absolute;
+	transition-duration: 800ms;
+	transition-timing-function: ease-in-out;
+}
