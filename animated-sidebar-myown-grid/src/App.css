@@ -1,5 +1,5 @@
 body {
-	background-color: rgba(240, 240, 240, 0.5);
+	margin: 20px;
 }
 
 .icon {
@@ -29,7 +29,6 @@ body {
 	padding: 0px;
 	margin: 10px;
 	line-height: 30px;
-	border: 2px solid black;
 	left: 10px;
 	position: absolute;
 	transition-duration: 800ms;
@@ -52,12 +51,46 @@ body {
 
 li {
 	padding: 10px;
-	margin: 10px;
 	border: 2px solid black;
-	width: 200px;
+	border-radius: 20px;
+	width: 220px;
 	height: auto;
+	background-color: aquamarine;
+}
+
+li:hover {
+	background-color: aqua;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.sidebar-grid {
+	display: grid;
+	grid-template-areas: 
+		"left-sub-icon text right-sub-icon";
+	grid-template-columns: 1fr 3fr 1fr;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.left-sub-icon {
+	grid-area: left-sub-icon;
+	margin-right: 20px;
+}
+
+.text {
+	grid-area: text;
+	margin-left: 10px;
+}
+
+.right-sub-icon {
+	grid-area: right-sub-icon;
 }
 
 .left-sub-icon, .right-sub-icon {
 	font-size: 30px;
 }
+
