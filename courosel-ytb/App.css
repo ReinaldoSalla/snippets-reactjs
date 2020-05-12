@@ -1,0 +1,49 @@
+:root {
+  --transition-time: 1000ms;
+}
+
+body {
+  background-color: rgba(240, 240, 240, 0.5);
+}
+
+.app-grid {
+  display: grid;
+  grid-template-areas:
+    "topbar  topbar   topbar"
+    "sidebar courosel courosel"
+    "sidebar content  ads"
+    "footer  footer   footer";
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px; 
+}
+
+.topbar {
+  grid-area: topbar;
+  background-color: rgba(25, 25, 25, 1);
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.courosel {
+  grid-area: courosel;
+}
+
+.content {
+  grid-area: content;
+  background-color: green;
+}
+
+.ads {
+  grid-area: ads;
+  background-color: blue;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: yellow;
+}
