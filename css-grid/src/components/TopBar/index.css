@@ -1,0 +1,57 @@
+.topbar-grid {
+	display: grid;
+	grid-template-areas:
+		"sidebar-icon company-logo input-search login-icon cart-icon"; 
+	align-items: center;
+	justify-content: space-around;
+	grid-gap: 5px;
+	padding: 10px;
+	margin: 2px;
+}
+
+.sidebar-icon-off {
+	grid-area: sidebar-icon;
+	color: white;
+	font-size: 40px;
+	transition-duration: var(--transition-time);
+}
+
+.sidebar-icon-on {
+	grid-area: sidebar-icon;
+	color: white;
+	font-size: 40px;
+	transition-duration: var(--transition-time);
+	transform: rotate(180deg);
+}
+
+.sidebar-icon-on:hover, .sidebar-icon-off:hover {
+	color: aqua;
+}
+
+.company-logo {
+	grid-area: company-logo;
+	color: white;
+	font-size: 20px;
+}
+
+.input-search {
+	grid-area: input-search;
+	border-radius: 20px;
+	padding: 8px;
+	border: 10px;
+	width: 275px;
+	height: 25px;
+	background-color: rgba(235, 235, 235, 1);
+}
+
+.login-icon {
+	grid-area: login-icon;
+	color: white;
+	font-size: 40px;
+}
+
+.cart-icon {
+	grid-area: cart-icon;
+	color: white;
+	font-size: 40px;
+}
