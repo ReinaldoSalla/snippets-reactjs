@@ -1,13 +1,6 @@
-/*
-1-the space bellow
-2-how to animate only after its loaded, the first three slide up in the right time
-3-how to animate three at the time, and not all the products at once
-*/
-
 import React from "react";
-import { data } from "./data";
-import { FaCartPlus } from "react-icons/fa";
 import "./App.css";
+import { data } from "./data";
 
 const productsPerPage = 3;
 const ProductContext = React.createContext();
@@ -62,18 +55,16 @@ function ProductProvider(props) {
   );
 }
 
-function Loading() {
-  return (
-    <span id="loading" >Loading...</span>
-  )
-}
+const Loading = () => (
+  <span id="loading">Loading...</span>
+);
 
 function Products() {
   const {products, isLoading, hasMore, startOperation} = React.useContext(ProductContext);
   const starter = React.useRef(startOperation);
   const observer = React.useRef(new IntersectionObserver(entries => {
   	if (entries[0].isIntersecting) starter.current();
-  }, { threshold: 0.5 }));
+  }, { threshold: 1 }));
   const [element, setElement] = React.useState(null);
 
   React.useEffect(() => {
@@ -88,63 +79,17 @@ function Products() {
   	}
   }, [element]);
 
-  /*
   return (
-  	<React.Fragment>
-      <ul id="products-grid">
-    		{products.map((product, index) => 
-    			<li key={index} id="product">
-    				product #{index + 1}
-    			</li>
-    		)}
-    		{isLoading && <li><Loading /></li>}
-    		{!isLoading && hasMore && (
-    			<li ref={setElement}></li>
-    		)}
-      </ul>
-  	</React.Fragment>
+  	<ul id="products-list">
+  		{products.map((product, index) => 
+  			<li key={index} id="product-element">
+  				product {index + 1}
+  			</li>
+  		)}
+  		{isLoading && <li id="loading-element"><Loading/></li>}
+  		{!isLoading && hasMore && <li id="ref-element" ref={setElement}></li>}
+  	</ul>
   );
-  */
-  
-  // Convert this into a list so it starts to be more predictable
-  return (
-  	<React.Fragment>
-  		<div className="products-overflow">	
-  			<div className="products-grid">
-  				{products.map((product, index) => 
-  					<div className="product-info">
-  						
-  					</div>
-  				)}
-  				{isLoading && <Loading />}
-  				{!isLoading && hasMore && <div ref={setElement}/>}
-  			</div>
-  		</div>
-  	</React.Fragment>
-  )
-
-  /*
-  return (
-    <React.Fragment>
-      <div className="products-overflow">
-        <div className="products-grid">
-          {products.map((product, index) => 
-            <div key={index} className="product-info">
-              <img id="product-img" src={product.img} alt={product.name}/>
-              <div className="product-text">
-                <span id="product-price">${product.price}</span>
-                <span id="product-name">{product.name}</span>
-                <FaCartPlus id="product-icon" />
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-      {isLoading && <Loading />}
-      {!isLoading && hasMore && <span ref={setElement}></span>}
-    </React.Fragment>
-  );
-  */
 }
 
 const Wrapper = () => (
