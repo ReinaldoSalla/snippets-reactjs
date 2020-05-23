@@ -1,0 +1,37 @@
+#products-list {
+	list-style: none;
+}
+
+.products-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(225px, 400px));
+	align-items: center;
+	justify-content: center;
+}
+
+#product-element, #loading-element, #ref-element {
+	padding: 10px;
+	margin: 10px;
+}
+
+#product-element {
+	border: 1px solid black;
+	height: 300px;
+	background-color: aqua;
+}
+
+#loading-element, #ref-element {
+	height: 100px;
+}
+
+#loading-element {
+	background-color: transparent;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+#loading {
+	font-size: 30px;
+}
