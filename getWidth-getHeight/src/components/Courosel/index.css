@@ -1,0 +1,76 @@
+.courosel {
+	overflow: hidden;
+	width: 1500px;
+	height: 400px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.imgs {
+	width: 500%;
+	display: flex;
+}
+
+.reference-img, .displaced-img {
+	width: 20%;
+	transition-duration: 1000ms;
+	display: flex;
+	justify-content: center;
+}
+
+#courosel-img {
+	width: 50%;
+	height: 50%;
+}
+
+.first-img > .imgs > .reference-img {
+	margin-left: 0%;
+}
+
+.second-img > .imgs > .reference-img {
+	margin-left: -20%;
+}
+
+.third-img > .imgs > .reference-img {
+	margin-left: -40%;
+}
+
+.forth-img > .imgs > .reference-img {
+	margin-left: -60%;
+}
+
+.fifth-img > .imgs > .reference-img {
+	margin-left: -80%;
+}
+
+.courosel-labels {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+}
+
+.courosel-label {
+	width: 50px;
+	height: 10px;
+	border: 2px solid white;
+	margin: 6px;
+	cursor: pointer;
+}
+
+.courosel-label:hover {
+	background: white;
+}
+
+#first-label-on, #second-label-on, #third-label-on, #forth-label-on, #fifth-label-on {
+	background-color: white;
+	transition-duration: 1000ms;
+}
+
+#first-input, #second-input, #third-input, #forth-input, #fifth-input {
+	position: absolute;
+	visibility: hidden;
+}
