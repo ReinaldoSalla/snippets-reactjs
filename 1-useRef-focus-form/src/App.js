@@ -1,99 +1,90 @@
 import React from "react";
-import "./App.css";
 
-/*
-const App = () => {
+const Form = () => {
+	const [inputs, setInputs] = React.useState({
+		name: "",
+		age: "",
+		profession: ""
+	});
 	const nameRef = React.useRef(null);
-	const [name, setName] = React.useState("");
-	const [age, setAge] = React.useState("");
-	const [profession, setProfession] = React.useState("");
+	const ageRef = React.useRef(null);
+	const professionRef = React.useRef(null);
+	const submitRef = React.useRef(null);
 
 	React.useEffect(() => {
 		nameRef.current.focus();
 	}, []);
 
-	const onSubmit = (event) => {
-		event.preventDefault();
-		alert(name);
-		setName("");
-		setAge("");
-		setProfession("");
-		nameRef.current.focus();
+	const onChange = event => {
+		setInputs({
+			...inputs,
+			[event.target.name]: event.target.value
+		});
 	};
 
+	const onKeyDownName = event => {
+		if (event.key === "Enter") ageRef.current.focus();
+	};
+
+	const onKeyDownAge = event => {
+		if (event.key === "Enter") professionRef.current.focus();
+	};
+
+	const onKeyDownProfession = event => {
+		if (event.key === "Enter") submitRef.current.focus();
+	};
+
+	const onSubmit = () => {
+		alert(`Are you sure?\nName: ${inputs.name}\nAge: ${inputs.age}\nProfession: ${inputs.profession}`);
+	};
+	
 	return (
-		<form id="form-flexbox">
+		<React.Fragment>
 			<label>
 				Name:
-				<input 
-					placeholder="reinaldo" 
+				<input
+					placeholder="e.g. Reinaldo"
+					name="name"
+					value={inputs.name}
 					ref={nameRef}
-					value={name}
-					onChange={event => setName(event.target.value)}
+					onChange={onChange}
+					onKeyDown={onKeyDownName}
 				/>
 			</label>
 			<label>
 				Age:
-				<input 
-					placeholder="25"
-					value={age}
-					onChange={event => setAge(event.target.value)}
+				<input
+					placeholder="e.g. 25"
+					name="age"
+					value={inputs.age}
+					ref={ageRef}
+					onChange={onChange}
+					onKeyDown={onKeyDownAge}
 				/>
 			</label>
 			<label>
 				Profession:
-				<input 
-					placeholder="developer" 
-					value={profession}
-					onChange={event => setProfession(event.target.value)}
+				<input
+					placeholder="e.g. Software Developer"
+					name="profession"
+					value={inputs.profession}
+					ref={professionRef}
+					onChange={onChange}
+					onKeyDown={onKeyDownProfession}
 				/>
 			</label>
-			<button
-				onKeyDown={onSubmit}
+			<button 
+				ref={submitRef}
+				onClick={onSubmit}
 			>
-				Submit Data
+				Submit
 			</button>
-		</form>
-	);
-};
-*/
-
-const reducer = (state, action) => {
-
-};
-
-const initialState = {
-	name: "",
-	age: "",
-	profession: ""
-};
-
-const init = () => initialState;
-
-const App = () => {
-	const [state, dispatch] = React.useReducer(
-		reducer,
-		initialState,
-		init
-	);
-	const nameRef = React.useRef(null);
-
-	React.useEffect(() => {
-		nameRef.current.focus();
-	}, []);
-
-	return (
-		<label>
-			Name:
-			<input
-				placeholder="reinaldo"
-				ref={nameRef}
-				value={state.name}
-			/>
-		</label>
+		</React.Fragment>
 	);
 };
 
-
+const App = () => (
+	<Form />
+);
 
 export default App;
