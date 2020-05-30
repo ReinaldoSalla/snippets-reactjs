@@ -70,26 +70,31 @@ a {
 .dropdown {
   position: absolute;
   top: 75px;
-  width: 200px;
+  width: 210px;
   background-color: var(--background-color);
   transform: translateX(-45%);
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 1rem;
   overflow: hidden;
-  height: 700px;
 }
 
 
 .menu-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-radius: var(--border-radius);
-  padding: 0.5rem;
+  padding: 0.3rem;
+  height: 60px;
 }
 
 .menu-item .icon-button {
-  margin-right: 2rem;
+  margin-right: 1.5rem;
+}
+
+.button-right {
+  margin-left: 1.5rem;
 }
 
 .menu-item:hover {
