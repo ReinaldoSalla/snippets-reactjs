@@ -17,21 +17,21 @@ const NavBar = ({ children }) => (
 	</nav>
 );
 
+const ChildrenToggler = ({ children, isOpen }) => (
+	children && isOpen ? children : null
+);
+
 const NavElement = ({ children, icon }) => {
 	const [isOpen, setIsOpen] = React.useState(true);
 
 	const toggle = () => setIsOpen(!isOpen);
-
-	const Children = () => (
-		children && isOpen ? children : null
-	);
 
 	return (
 		<li className="nav-item">
 			<a href ="/#" className="icon-button" onClick={toggle}>
 				{icon}
 			</a>
-			<Children />
+			<ChildrenToggler children={children} isOpen={isOpen} />
 		</li>
 	);
 };
