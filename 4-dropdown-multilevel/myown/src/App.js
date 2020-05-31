@@ -34,7 +34,19 @@ const NavElement = ({ children, icon }) => {
 			<Children />
 		</li>
 	);
-}
+};
+
+const DropDownItem = ({ children, leftIcon, rightIcon, menu }) => (
+	<a
+		href="/#"
+		className="menu-item"
+		onClick={menu}
+	>
+		<span className="icon-button">{leftIcon}</span>
+		<span className="menu-text">{children}</span>
+		<span className="icon-button button-right">{rightIcon}</span>
+	</a>
+);
 
 const DropDownMenu = () => {
 	const [menus, setMenus] = React.useState({
@@ -93,18 +105,6 @@ const DropDownMenu = () => {
 		});
 		setMenuHeight(nodeRef.current.offsetHeight);
 	};
-
-	const DropDownItem = ({ children, leftIcon, rightIcon, menu }) => (
-			<a
-				href="/#"
-				className="menu-item"
-				onClick={menu}
-			>
-				<span className="icon-button">{leftIcon}</span>
-				<span className="menu-text">{children}</span>
-				<span className="icon-button button-right">{rightIcon}</span>
-			</a>
-	);
 
 	return (
 		<div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
