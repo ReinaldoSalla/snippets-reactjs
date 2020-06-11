@@ -2,11 +2,35 @@
 	text-align: center;
 }
 
-.first-element {
+.first-element-off, .first-element-on {
 	margin-top: 1000px;
 	margin-bottom: 1000px;
+	font-size: 100px;
 }
 
-.second-element {
+.first-element-off {
+	transform: translateX(-100%);
+}
+
+.first-element-on {
+	transition: transform 2000ms;
+	transform: translateX(0%);
+}
+
+.second-overflow {
+	overflow: hidden;
+}
+
+.second-element-off, .second-element-on {
 	margin-bottom: 1000px;
+	font-size: 100px;
+}
+
+.second-element-off {
+	transform: translateX(100%);
+}
+
+.second-element-on {
+	transition: transform 2000ms;
+	transform: translateX(0%);
 }

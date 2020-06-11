@@ -3,31 +3,27 @@ import React, {
 	useEffect,
 	useState
 } from "react";
-import throttle from "lodash.throttle";
 import "./App.css";
+import throttle from "lodash.throttle";
 
-let nCalls = 0;
-let useVisibilityNumCalls = 0;
-
-const useVisibility = (throttleMiliseconds=100) => {
+const offset = 100;
+const useVisibility = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const currentElement = createRef(null);
 
-	useVisibilityNumCalls++;
-	console.log(`useVisibilityNumCalls = ${useVisibilityNumCalls}`);
+	const checkIsVisible = top => 
+		top + offset >= 0 && top + offset <= window.innerHeight;
 
-	// onScroll is executed only once every 100 ms.
 	const onScroll = throttle(() => {
 		if (!currentElement.current) {
 			setIsVisible(false);
 			return;
+		} else {
+			setIsVisible(checkIsVisible(
+				currentElement.current.getBoundingClientRect().top
+			));
 		}
-		const top = currentElement.current.getBoundingClientRect().top;
-		setIsVisible(
-			top >= 0 && 
-			top <= window.innerHeight
-		);
-	}, throttleMiliseconds);
+	}, 100);
 
 	useEffect(() => {
 		window.addEventListener("scroll", onScroll);
@@ -35,63 +31,31 @@ const useVisibility = (throttleMiliseconds=100) => {
 	});
 
 	return [isVisible, currentElement];
-};
-
-/*
-const useVisibility = () => {
-	const [debounce, setDebounce] = useState(0);
-	const [isVisible, setIsVisible] = useState(false);
-	const currentElement = createRef(null);
-
-	useVisibilityNumCalls++;
-	console.log(`useViibilityNumCalls = ${useVisibilityNumCalls}`);
-	console.log(`debounce = ${debounce}`);
-
-	const onScroll = () => {
-		if (!currentElement.current) {
-			setIsVisible(false);
-			return
-		}
-		const top = currentElement.current.getBoundingClientRect().top;
-		setIsVisible(top >= 0 && top <= window.innerHeight);
-	}
-
-	useEffect(() => {
-		const intervalId = setInterval(() => {
-			setDebounce(debounce + 1);
-		}, 5000);
-		return () => clearInterval(intervalId);
-	}, [debounce]);
-
-	useEffect(() => {
-		window.addEventListener("scroll", onScroll);
-		return () => window.removeEventListener("scroll", onScroll);
-	}, [debounce]);
-
-	return [isVisible, currentElement];
-};
-*/
+}; 
 
 const App = () => {
 	const [isFirstVisible, firstRef] = useVisibility();
 	const [isSecondVisible, secondRef] = useVisibility();
+	const firstClassName = isFirstVisible 
+		? "first-element-on"
+		: "first-element-off";
+	const secondClassName = isSecondVisible 
+		? "second-element-on"
+		: "second-element-off";
 
 	useEffect(() => {
 		document.title = `${isFirstVisible} - ${isSecondVisible}`
 	}, [isFirstVisible, isSecondVisible]);
 
-	nCalls++;
-	console.log(`call nº ${nCalls}`)
-	console.log(`isFirstVisisble = ${isFirstVisible}`);
-	console.log(`isSecondVisible = ${isSecondVisible}`);
-
 	return (
 		<div className="app">
-			<div ref={firstRef} className="first-element">
+			<div ref={firstRef} className={firstClassName}>
 				Event isFirstVisible
 			</div>
-			<div ref={secondRef} className="second-element">
-				Event isSecondVisible
+			<div className="second-overflow">
+				<div ref={secondRef} className={secondClassName}>
+					Event isSecondVisible
+				</div>
 			</div>
 		</div>
 	);
