@@ -1,3 +1,4 @@
+
 import React, {
 	createRef,
 	useEffect,
@@ -7,6 +8,7 @@ import "./App.css";
 import throttle from "lodash.throttle";
 
 const offset = 100;
+
 const useVisibility = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const currentElement = createRef(null);
