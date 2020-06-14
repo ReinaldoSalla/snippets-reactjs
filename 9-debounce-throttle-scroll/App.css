@@ -1,0 +1,19 @@
+body {
+	background-color: oldlace;
+}
+
+.count {
+	position: fixed;
+	color: black;
+	background-color: aquamarine;
+  width: 300px;
+  text-align: center;
+	z-index: 1;
+}
+
+.content {
+	position: absolute;
+	margin-top: 200px;
+	display: flex;
+	flex-wrap: wrap;
+}
