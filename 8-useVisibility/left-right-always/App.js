@@ -1,23 +1,15 @@
+
 import React, {
 	createRef,
 	useEffect,
 	useState
 } from "react";
 import "./App.css";
+import throttle from "lodash.throttle";
 
-const throttle = (fn, delay) => {
-  let last = 0;
-  return (...args) => {
-    const now = new Date().getTime();
-    if (now - last < delay) {
-      return;
-    }
-    last = now;
-    return fn(...args);
-  };
-};
+const offset = 100;
 
-const useVisibility = offset => {
+const useVisibility = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const currentElement = createRef(null);
 
@@ -44,8 +36,8 @@ const useVisibility = offset => {
 }; 
 
 const App = () => {
-	const [isFirstVisible, firstRef] = useVisibility(100);
-	const [isSecondVisible, secondRef] = useVisibility(100);
+	const [isFirstVisible, firstRef] = useVisibility();
+	const [isSecondVisible, secondRef] = useVisibility();
 	const firstClassName = isFirstVisible 
 		? "first-element-on"
 		: "first-element-off";
@@ -70,6 +62,5 @@ const App = () => {
 		</div>
 	);
 };
-
 
 export default App;
