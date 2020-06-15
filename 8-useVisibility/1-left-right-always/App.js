@@ -25,14 +25,9 @@ const useVisibility = offset => {
 		top + offset >= 0 && top + offset <= window.innerHeight;
 
 	const onScroll = throttle(() => {
-		if (!currentElement.current) {
-			setIsVisible(false);
-			return;
-		} else {
-			setIsVisible(checkIsVisible(
-				currentElement.current.getBoundingClientRect().top
-			));
-		}
+		setIsVisible(checkIsVisible(
+			currentElement.current?.getBoundingClientRect().top
+		));
 	}, 100);
 
 	useEffect(() => {
