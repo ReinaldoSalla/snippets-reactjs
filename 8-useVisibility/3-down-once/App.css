@@ -1,0 +1,52 @@
+
+.app {
+	text-align: center;
+}
+
+.first-element-off, .first-element-on {
+	margin-top: 1000px;
+	margin-bottom: 1000px;
+	font-size: 100px;
+}
+
+.first-element-off {
+	transform: translateX(-100%);
+}
+
+.first-element-on {
+	transition: transform 2000ms;
+	transform: translateX(0%);
+}
+
+.second-overflow {
+	overflow: hidden;
+}
+
+.second-element-off, .second-element-on {
+	margin-bottom: 1000px;
+	font-size: 100px;
+}
+
+.second-element-off {
+	transform: translateX(100%);
+}
+
+.second-element-on {
+	transition: transform 2000ms;
+	transform: translateX(0%);
+}
+
+.third-element-off, .third-element-on {
+  margin-bottom: 1000px;
+  font-size: 100px;
+}
+
+.third-element-off {
+  transform: translateY(300px);
+}
+
+.third-element-on {
+  transition: transform 1000ms;
+  transform: translateY(0%);
+}
+
