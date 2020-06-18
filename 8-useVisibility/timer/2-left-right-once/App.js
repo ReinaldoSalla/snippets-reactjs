@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import "./App.css";
 
-const useVisibilityTimeAlways = (id, offset) => {
+const useVisibilityTimerOnce = (offset) => {
   const [isVisible, setIsVisible] = useState(false);
   const [wasAlreadyVisible, setWasAlreadyVisible] = useState(false);
   const currentElement = createRef(null);
@@ -31,8 +31,8 @@ const useVisibilityTimeAlways = (id, offset) => {
 };
 
 const App = () => {
-	const [isFirstVisible, firstRef] = useVisibilityTimeAlways(1, 100);
-	const [isSecondVisible, secondRef] = useVisibilityTimeAlways(2, 100);
+	const [isFirstVisible, firstRef] = useVisibilityTimerOnce(100);
+	const [isSecondVisible, secondRef] = useVisibilityTimerOnce(100);
 	const firstClassName = isFirstVisible 
 		? "first-element-on"
 		: "first-element-off";
