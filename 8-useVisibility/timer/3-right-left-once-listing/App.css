@@ -1,0 +1,41 @@
+.items {
+  margin-top: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1000px;
+}
+
+.item-off, .item-on {
+  border: 1px solid black;
+  display: flex;
+  flex-shrink: 0;
+  width: 250px;
+  height: 250px;
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-off {
+  transform: translateX(-500%);
+}
+
+.item-on {
+  transition: transform 2000ms;
+  transform: translateX(0%);
+}
+
+@media (max-width: 1080px) {
+  .item-off {
+    transform: translateX(-350%);
+  }
+}
+
+@media (max-width: 730px) {
+  .item-off {
+    transform: translateX(-200%);
+  }
+}
