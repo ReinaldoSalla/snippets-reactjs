@@ -1,0 +1,32 @@
+
+.items {
+  margin-top: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1000px;
+}
+
+.item-off, .item-on {
+  border: 1px solid black;
+  display: flex;
+  flex-shrink: 0;
+  width: 250px;
+  height: 250px;
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-off {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.item-on {
+  transition: transform 2000ms, opacity 2000ms;
+  transform: translateY(0%);
+  opacity: 1;
+}
