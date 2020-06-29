@@ -1,0 +1,173 @@
+body {
+  background-color: rgba(240, 240, 240, 0.5);
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+  color: inherit;
+}
+
+/*
+.container-opacity-off {
+  transition: opacity 1000ms;
+  opacity: 1;
+}
+
+.container-opacity-on {
+  transition: opacity 1000ms;
+  opacity: 0.4;
+  pointer-events: none;
+}
+*/
+
+/********************************************************************************/
+
+:root {
+  --slide-duration: 1000ms;
+}
+
+.courosel-container {
+  display: flex;
+  justify-content: center;
+}
+
+.courosel-img {
+  width: 100%;
+  height: 400px;
+}
+
+.courosel {
+  padding: 10px;
+  margin: 10px;
+  transform: translateY(20%);
+  border: 5px solid red;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.first-img-off,
+.second-img-off,
+.third-img-off,
+.forth-img-off,
+.fifth-img-off,
+.first-img-on,
+.second-img-on,
+.third-img-on,
+.forth-img-on,
+.fifth-img-on {
+  position: absolute;
+  width: 100%;
+}
+
+.first-img-off {
+  transition: opacity calc(var(--slide-duration) * 2);
+  opacity: 0;
+}
+
+.second-img-off {
+  transition: opacity calc(var(--slide-duration) * 2);
+  opacity: 0;
+}
+
+.third-img-off {
+  transition: opacity calc(var(--slide-duration) * 2);
+  opacity: 0;
+}
+
+.forth-img-off {
+  transition: opacity calc(var(--slide-duration) * 2);
+  opacity: 0;
+}
+
+.fifth-img-off {
+  transition: opacity calc(var(--slide-duration) * 2);
+  opacity: 0;
+}
+
+.first-img-on {
+  z-index: 1;
+  opacity: 1;
+  animation: slide-in var(--slide-duration);
+}
+
+.second-img-on {
+  z-index: 1;
+  opacity: 1;
+  animation: slide-in var(--slide-duration);
+}
+
+.third-img-on {
+  z-index: 1;
+  opacity: 1;
+  animation: slide-in var(--slide-duration);
+}
+
+.forth-img-on {
+  z-index: 1;
+  opacity: 1;
+  animation: slide-in var(--slide-duration);
+}
+
+.fifth-img-on {
+  z-index: 1;
+  opacity: 1;
+  animation: slide-in var(--slide-duration);
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.courosel-inputs {
+  display: flex;
+  justify-content: center;
+  transform: translateY(900%);
+  z-index: 2;
+}
+
+.first-input-off,
+.second-input-off,
+.third-input-off,
+.forth-input-off,
+.fifth-input-off,
+.first-input-on,
+.second-input-on,
+.third-input-on,
+.forth-input-on,
+.fifth-input-on {
+  width: 60px;
+  height: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 2px solid white;
+  margin: 20px;
+}
+
+.first-input-on,
+.second-input-on,
+.third-input-on,
+.forth-input-on,
+.fifth-input-on {
+  transition: background-color var(--slide-duration);
+  background-color: white;
+}
+
+.courosel-input:hover {
+  background-color: white;
+}

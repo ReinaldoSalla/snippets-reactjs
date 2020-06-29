@@ -1,0 +1,219 @@
+:root {
+  --sidebar-width: 300px;
+  --sidebar-item-width: 280px;
+  --sidebar-content-item-size: 20px;
+  --sidebar-icons-offsetY: 5%;
+  --sidebar-offsetY: 56px;
+  --sidebar-1500px-offsetX: -84px; 
+  --sidebar-1400px-offsetX: -77px;
+  --sidebar-1300px-offsetX: -70px;
+  --sidebar-1200px-offsetX: -60px;
+  --sidebar-1100px-offsetX: -50px;
+  --sidebar-1000px-offsetX: -40px;
+  --sidebar-900px-offsetX:  -30px;
+  --sidebar-800px-offsetX:  -20px;
+  --sidebar-700px-offsetX:  -10px;
+  --sidebar-600px-offsetX:    0px;
+  --sidebar-500px-offsetX:   10px;
+  --sidebar-400px-offsetX:   30px; 
+  --sidebar-370px-offsetX:   20px;
+  --sidebar-350px-offsetX:   10px;
+  --sidebar-300px-offsetX:   -2px;
+}
+
+.sidebar-icon-off, .sidebar-icon-on {
+  /* margin: 0px 50px 0px 50px; */ /*ok, but input feels strange on mobile*/
+  margin: var(--topbar-menu-spacing);
+	color: white;
+	font-size: 40px;
+	transition-duration: 1000ms;
+}
+
+.sidebar-icon-on {
+  transform: rotate(180deg);
+}
+
+.sidebar-icon-on:hover, .sidebar-icon-off:hover {
+	color: aqua;
+}
+
+.sidebar-icon-content {
+	position: relative;
+	background-color: black;
+	top: 3px;
+}
+
+.sidebar-content-on, .sidebar-content-off {
+	position: absolute;
+	background-color: black;
+	top: var(--sidebar-offsetY);
+	width: var(--sidebar-width);
+	padding: 10px;
+	overflow: hidden;
+}
+
+.sidebar-content-off {
+	transition: left 1000ms;
+	left: -500px;
+}
+
+.sidebar-content-on {
+	transition: left 1000ms, height 1000ms;
+	left: var(--sidebar-1500px-offsetX);
+}
+
+@media (max-width: 1500px) {
+  .sidebar-content-on {
+    left: var(--sidebar-1500px-offsetX);
+  }
+}
+
+@media (max-width: 1400px) {
+  .sidebar-content-on {
+    left: var(--sidebar-1400px-offsetX);
+  }
+}
+
+@media (max-width: 1300px) {
+  .sidebar-content-on {
+   left: var(--sidebar-1300px-offsetX);
+  }
+}
+
+@media (max-width: 1200px) {
+  .sidebar-content-on {
+    left: var(--sidebar-1200px-offsetX);
+  }
+}
+
+@media (max-width: 1100px) {
+  .sidebar-content-on {
+    left: var(--sidebar-1100px-offsetX);
+  }
+}
+
+@media (max-width: 1000px) {
+  .sidebar-content-on {
+    left: var(--sidebar-1000px-offsetX);
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar-content-on {
+    left: var(--sidebar-900px-offsetX);
+  }
+}
+
+@media (max-width: 800px) {
+  .sidebar-content-on {
+    left: var(--sidebar-800px-offsetX);
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar-content-on {
+    left: var(--sidebar-700px-offsetX);
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-content-on {
+    left: var(--sidebar-600px-offsetX);
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar-content-on {
+    left: var(--sidebar-500px-offsetX);
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar-content-on {
+    left: var(--sidebar-400px-offsetX);
+  }
+}
+
+@media (max-width: 370px) {
+  .sidebar-content-on {
+    left: var(--sidebar-370px-offsetX);
+  }
+}
+
+@media (max-width: 350px) {
+  .sidebar-content-on {
+    left: var(--sidebar-350px-offsetX);
+  }
+}
+
+@media (max-width: 300px) {
+  .sidebar-content-on {
+    left: var(--sidebar-300px-offsetX);
+  }
+}
+
+.sidebar-content-item {
+	padding: 10px;
+	height: 20px;
+	display: flex;
+	flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+	width: var(--sidebar-item-width);
+  transition: background-color 250ms;	
+}
+
+.sidebar-content-item:hover {
+	background-color: rgb(87, 76, 76);
+	cursor: pointer;
+}
+
+.sidebar-content-icon > svg {
+	font-size: var(--sidebar-content-item-size);
+	color: white;
+  transform: translateY(var(--sidebar-icons-offsetY));
+  border-radius: 50%;
+  padding: 5px;
+  background-color: rgb(36, 22, 22);
+  border: 1px solid rgb(54, 52, 52);
+  transition: filter 500ms;
+}
+
+.sidebar-content-icon > svg:hover {
+  filter: brightness(2);
+}
+
+.sidebar-content-text {
+	color: white;
+	font-size: var(--sidebar-content-item-size);
+  border: 0px solid black;
+}
+
+.primary-off {
+	position: absolute;
+	transition: transform 1000ms;
+	transform: translateX(200%);
+}
+
+.smartphones-off,
+.notebooks-off,
+.televisions-off,
+.videogames-off,
+.mens-off,
+.womans-off {
+	position: absolute;
+	transition: transform 1000ms;
+	transform: translateX(-200%);
+}
+
+.primary-on,
+.smartphones-on,
+.notebooks-on,
+.televisions-on,
+.videogames-on,
+.mens-on,
+.womans-on {
+	position: absolute;
+	transition: transform 1000ms;
+	transform: translateX(0%);
+}

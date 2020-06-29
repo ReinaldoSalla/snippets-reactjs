@@ -1,0 +1,27 @@
+.footer-line {
+  margin-bottom: 20px;
+  border-top: 1px solid rgb(136, 126, 126);
+  margin-right: 75px;
+  margin-left: 75px;
+}
+
+
+.footer-content {
+  margin-bottom: 50px;
+  width: auto;
+  margin-right: 75px;
+  margin-left: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+}
+
+.footer-content-link, .footer-year {
+  font-size: 20px;
+}
+
+.footer-content-link:hover {
+  color: red
+}
