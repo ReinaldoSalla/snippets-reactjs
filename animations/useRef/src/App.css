@@ -1,0 +1,33 @@
+button {
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+.items-on, .items-off {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+
+.items-off {
+  transition: transform 1000ms;
+  transform: translateX(-120%);
+}
+
+.items-on {
+  transition: transform 1000ms;
+  transform: translateX(0%);
+}
+
+.item {
+  border: 2px solid blue;
+  margin: 10px;
+  padding: 10px;
+  width: 100px;
+}
