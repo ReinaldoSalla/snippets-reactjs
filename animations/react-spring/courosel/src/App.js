@@ -1,9 +1,10 @@
 /*
 todo
+1-maybe use transitions for the inputs, because togglin between the same properties in react-spring and css may noy  be the best way to use, and its another way to familiarize with useTransition
 1-click the last one
 3-why 0px and not 0% or just 0?
 4-user goes to another page and comes back seens to thigger the courosel
-5-relashion between timer and inputs, becase now it seens one breaks the other
+5-relashion between timer and inputs, because now it seens one breaks the other, maybe use lodash's throttle
 6-make the opacity fells right
 5-reducing the size of the buttons with flexbox insted of hardcoding media queies
 */
@@ -114,7 +115,7 @@ const App = () => {
   });
 
   const props = useSpring({
-    to: { background: 'white' }
+    background: 'white'
   });
 
   const styleFirstInput = state.index === 0 ? props : null;
