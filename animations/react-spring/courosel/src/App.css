@@ -60,7 +60,7 @@ body {
   height: 12px;
   border-radius: 5px;
   background: transparent;
-  transition: background 500ms;
+  transition: background 1500ms;
 }
 
 @media (max-width: 600px) {
