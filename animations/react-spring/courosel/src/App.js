@@ -1,13 +1,15 @@
 /*
 todo
-1-maybe use transitions for the inputs, because togglin between the same properties in react-spring and css may noy  be the best way to use, and its another way to familiarize with useTransition
-1-click the last one
+1-click the last one https://stackoverflow.com/questions/53895676/how-to-use-lodash-to-throttle-multiple-buttons-with-1-throttle
 3-why 0px and not 0% or just 0?
 4-user goes to another page and comes back seens to thigger the courosel
 5-relashion between timer and inputs, because now it seens one breaks the other, maybe use lodash's throttle
+5-improve the effect, the current config looks bad
 6-make the opacity fells right
 5-reducing the size of the buttons with flexbox insted of hardcoding media queies
+6-figure out how to handle the hover animation since react spring is taking over the background
 */
+
 import React, {
   useCallback,
   useEffect,
@@ -21,8 +23,9 @@ import js2 from './assets/js2.jpg';
 import js3 from './assets/js3.png';
 import js4 from './assets/js4.jpg';
 import js5 from './assets/js5.jpg';
+import throttle from 'lodash.throttle';
 
-const duration = 5000;
+const duration = 1e10;
 
 const CouroselItem = ({ style, img }) => (
   <animated.div className='courosel-item' style={style}>
@@ -78,9 +81,9 @@ const App = () => {
     dispatch({ type: 'MOVE_TO_NEXT_ITEM' })
   ), []);
 
-  const handleFirstItem = useCallback(() => (
+  const handleFirstItem = useCallback(() => {
     dispatch({ type: 'MOVE_TO_FIRST_ITEM' })
-  ), []);
+  }, []);
 
   const handleSecondItem = useCallback(() => (
     dispatch({ type: 'MOVE_TO_SECOND_ITEM' })
@@ -98,34 +101,52 @@ const App = () => {
     dispatch({ type: 'MOVE_TO_FIFTH_ITEM' })
   ), []);
 
+  const handleChange = throttle((event) => {
+    const value = Object.values(event.target)[1].value;
+    console.log(value);
+    if (value === 'first-input') handleFirstItem();
+    event.persist();
+  }, 1000, { leading: false });
+  
   useEffect(() => {
     const intervalId = setInterval(() => {
       handleNextItem();
-    }, duration)
+    }, duration);
     return () => clearInterval(intervalId);
   }, [handleNextItem]);
 
   const transitions = useTransition(state.index, p => p, {
-    config: { mass: 2, tension: 70, friction: 24, precision: 0.001 },
+    // config: { mass: 2, tension: 70, friction: 24, precision: 0.001 },
     initial: { opacity: 1, transform: 'translate3d(0%, 0, 0)', },
-    from: { opacity: 1, transform: 'translate3d(-100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
+    from: { opacity: 1, transform: 'translate3d(-100%,0,0)', },
+    enter: { opacity: 1, transform: 'translate3d(0%,0,0)',  },
     leave: { opacity: 1, transform: 'translate3d(0,0,0)' },
   });
 
-  const props = useSpring({
-    background: 'white'
+  const firstInputAnimation = useSpring({
+    config: { duration: 500 },
+    background: state.index === 0 ? 'white' : 'rgba(0, 0, 0, 0.1)'
   });
 
-  const styleFirstInput = state.index === 0 ? props : null;
+  const secondInputAnimation = useSpring({ 
+    config: { duration: 500 },
+    to: { background: state.index === 1 ? 'white': 'rgba(0, 0, 0, 0.1)' }
+  });
 
-  const styleSecondInput = state.index === 1 ? props : null;
+  const thirdInputAnimation = useSpring({
+    config: { duration: 500 },
+    to: { background: state.index === 2 ? 'white' : 'rgba(0, 0, 0, 0.1)' }
+  });
 
-  const styleThirdInput = state.index === 2 ? props : null;
+  const forthInputAnimation = useSpring({
+    config: { duration: 500 },
+    to: { background: state.index === 3 ? 'white' : 'rgba(0, 0, 0, 0.1)' }
+  });
 
-  const styleForthInput = state.index === 3 ? props : null;
-
-  const styleFifthInput = state.index === 4 ? props : null;
+  const fifthInputAnimation = useSpring({
+    config: { duration: 500 },
+    to: { background: state.index === 4 ? 'white' : 'rgba(0, 0, 0, 0.1)' }
+  });
 
   return (
     <Fragment>
@@ -141,29 +162,34 @@ const App = () => {
       <div className='courosel-inputs-container'>
         <div className='courosel-inputs'>
           <animated.div 
-            style={styleFirstInput} 
+            style={firstInputAnimation}
             className='courosel-input' 
             onClick={handleFirstItem} 
+            value='first-input'
           />
           <animated.div 
-            style={styleSecondInput}
+            style={secondInputAnimation}
             className='courosel-input' 
             onClick={handleSecondItem} 
+            value='second-input'
           />
           <animated.div 
-            style={styleThirdInput}
+            style={thirdInputAnimation}
             className='courosel-input' 
             onClick={handleThirdItem} 
+            value='third-input'
           />
           <animated.div 
-            style={styleForthInput}
+            style={forthInputAnimation}
             className='courosel-input' 
             onClick={handleForthItem} 
+            value='forth-input'
           />
           <animated.div 
-            style={styleFifthInput}
+            style={fifthInputAnimation}
             className='courosel-input' 
             onClick={handleFifthItem} 
+            value='fifth-input'
           />
         </div>
       </div>
