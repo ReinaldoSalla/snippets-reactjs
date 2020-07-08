@@ -37,21 +37,13 @@ body {
   z-index: 1;
 }
 
-.courosel-inputs-container {
-  display: flex;
-  align-items: center; 
-  justify-content: center;
-}
 
 .courosel-inputs {
-  /* border: 2px solid black; */
   z-index: 2;
-  /* transform: translateX(150%); */
-  width: 600px;
   display: flex;
-  align-items: center;
   justify-content: space-evenly;
-  transform: translateY(100%);
+  transform: translateY(10%);
+  margin: 0 4em 0 4em;
 }
 
 .courosel-input {
@@ -61,16 +53,10 @@ body {
   border-radius: 5px;
   background: transparent;
   transition: background 1500ms;
-}
-
-@media (max-width: 600px) {
-  .courosel-inputs {
-    width: 350px
-  }
-
-  .courosel-input {
-    width: 20px
-  }
+  padding: 0.5em;
+  margin: 0.5em;
+  height: 0.05em;
+  width: 2em;
 }
 
 .courosel-input:hover {

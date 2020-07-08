@@ -8,7 +8,6 @@ todo
 6-make the opacity fells right
 5-reducing the size of the buttons with flexbox insted of hardcoding media queies
 */
-
 import React, {
   useCallback,
   useEffect,
