@@ -81,9 +81,9 @@ const App = () => {
     dispatch({ type: 'MOVE_TO_NEXT_ITEM' })
   ), []);
 
-  const handleFirstItem = useCallback(() => {
+  const handleFirstItem = useCallback(() => (
     dispatch({ type: 'MOVE_TO_FIRST_ITEM' })
-  }, []);
+  ), []);
 
   const handleSecondItem = useCallback(() => (
     dispatch({ type: 'MOVE_TO_SECOND_ITEM' })
@@ -104,9 +104,9 @@ const App = () => {
   const handleChange = throttle((event) => {
     const value = Object.values(event.target)[1].value;
     console.log(value);
-    if (value === 'first-input') handleFirstItem();
-    event.persist();
-  }, 1000, { leading: false });
+    handleFirstItem();
+    //if (value === 'first-input') handleFirstItem();
+  }, 1000, { leading: true, trailing: false });
   
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -116,7 +116,7 @@ const App = () => {
   }, [handleNextItem]);
 
   const transitions = useTransition(state.index, p => p, {
-    // config: { mass: 2, tension: 70, friction: 24, precision: 0.001 },
+    config: { mass: 2, tension: 70, friction: 24, precision: 0.001 },
     initial: { opacity: 1, transform: 'translate3d(0%, 0, 0)', },
     from: { opacity: 1, transform: 'translate3d(-100%,0,0)', },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)',  },
@@ -125,7 +125,7 @@ const App = () => {
 
   const firstInputAnimation = useSpring({
     config: { duration: 500 },
-    background: state.index === 0 ? 'white' : 'rgba(0, 0, 0, 0.1)'
+    background: state.index === 0 ? 'white' : 'rgba(0, 0, 0, 0.1)',
   });
 
   const secondInputAnimation = useSpring({ 
@@ -164,7 +164,8 @@ const App = () => {
           <animated.div 
             style={firstInputAnimation}
             className='courosel-input' 
-            onClick={handleFirstItem} 
+            onClick={(event) => {event.persist(); handleChange(event)}} 
+            // onClick={handleFirstItem}
             value='first-input'
           />
           <animated.div 

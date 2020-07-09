@@ -11,7 +11,6 @@ body {
 .courosel {
   margin: 10px 50px 10px 50px;
   transform: translateY(20%);
-  /* border: 5px solid red; */
   width: 90%;
   height: 400px;
   display: flex;
