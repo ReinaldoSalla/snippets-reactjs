@@ -10,14 +10,13 @@ todo
 6-figure out how to handle the hover animation since react spring is taking over the background
 */
 
-
 import React, {
   useCallback,
   useEffect,
   Fragment,
   useReducer
 } from 'react';
-import { useTransition, animated, useSpring } from 'react-spring';
+import { useTransition, animated, useSpring, config } from 'react-spring';
 import './App.css';
 import js1 from './assets/js1.png';
 import js2 from './assets/js2.jpg';
@@ -110,9 +109,9 @@ const App = () => {
   }, [handleNextItem]);
 
   const transitions = useTransition(state.index, p => p, {
-    // config: { mass: 2, tension: 70, friction: 24, precision: 0.001 },
-    //config: { mass: 1, tension: 140, friction: 26 },
-    config: { duration: 1000, easing: easings.easeCubic },
+    // config: { mass: 1, tension: 170, friction: 26, precision: 0.001 }, // default
+    config: { mass: 5, tension: 50, friction: 26, clamp: true },
+    // config: { duration: 1000, easing: easings.easeCubic },
     initial: { opacity: 1, transform: 'translate3d(0%, 0, 0)', },
     from: { opacity: 1, transform: 'translate3d(-100%,0,0)', },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)',  },
