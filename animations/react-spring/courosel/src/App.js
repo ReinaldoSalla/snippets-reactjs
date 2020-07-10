@@ -10,6 +10,7 @@ todo
 6-figure out how to handle the hover animation since react spring is taking over the background
 */
 
+
 import React, {
   useCallback,
   useEffect,
@@ -23,7 +24,7 @@ import js2 from './assets/js2.jpg';
 import js3 from './assets/js3.png';
 import js4 from './assets/js4.jpg';
 import js5 from './assets/js5.jpg';
-import throttle from 'lodash.throttle';
+import * as easings from 'd3-ease';
 
 const duration = 1e10;
 
@@ -100,13 +101,6 @@ const App = () => {
   const handleFifthItem = useCallback(() => (
     dispatch({ type: 'MOVE_TO_FIFTH_ITEM' })
   ), []);
-
-  const handleChange = throttle((event) => {
-    const value = Object.values(event.target)[1].value;
-    console.log(value);
-    handleFirstItem();
-    //if (value === 'first-input') handleFirstItem();
-  }, 1000, { leading: true, trailing: false });
   
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -116,11 +110,13 @@ const App = () => {
   }, [handleNextItem]);
 
   const transitions = useTransition(state.index, p => p, {
-    config: { mass: 2, tension: 70, friction: 24, precision: 0.001 },
+    // config: { mass: 2, tension: 70, friction: 24, precision: 0.001 },
+    //config: { mass: 1, tension: 140, friction: 26 },
+    config: { duration: 1000, easing: easings.easeCubic },
     initial: { opacity: 1, transform: 'translate3d(0%, 0, 0)', },
     from: { opacity: 1, transform: 'translate3d(-100%,0,0)', },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)',  },
-    leave: { opacity: 1, transform: 'translate3d(0,0,0)' },
+    leave: { opacity: 0, transform: 'translate3d(0,0,0)' },
   });
 
   const firstInputAnimation = useSpring({
@@ -164,8 +160,7 @@ const App = () => {
           <animated.div 
             style={firstInputAnimation}
             className='courosel-input' 
-            onClick={(event) => {event.persist(); handleChange(event)}} 
-            // onClick={handleFirstItem}
+            onClick={handleFirstItem}
             value='first-input'
           />
           <animated.div 
