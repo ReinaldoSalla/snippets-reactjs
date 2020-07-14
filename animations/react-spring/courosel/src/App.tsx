@@ -4,10 +4,8 @@ todo
 3-why 0px and not 0% or just 0?
 4-user goes to another page and comes back seens to thigger the courosel
 5-relashion between timer and inputs, because now it seens one breaks the other, maybe use lodash's throttle
-5-improve the effect, the current config looks bad
-6-make the opacity fells right
+5-sometimes, during the transformX the img locks a little, it's a little but it's visible, maybe try other configs, or use ease-3e
 5-reducing the size of the buttons with flexbox insted of hardcoding media queies
-6-figure out how to handle the hover animation since react spring is taking over the background
 */
 
 import React, {
@@ -23,9 +21,12 @@ import js2 from './assets/js2.jpg';
 import js3 from './assets/js3.png';
 import js4 from './assets/js4.jpg';
 import js5 from './assets/js5.jpg';
-import * as easings from 'd3-ease';
 
 const duration = 1e10;
+
+const customConfig = { 
+  heavy: { mass: 5, tension: 50, friction: 26, clamp: true }
+};
 
 const CouroselItem = ({ style, img }) => (
   <animated.div className='courosel-item' style={style}>
@@ -110,7 +111,7 @@ const App = () => {
 
   const transitions = useTransition(state.index, p => p, {
     // config: { mass: 1, tension: 170, friction: 26, precision: 0.001 }, // default
-    config: { mass: 5, tension: 50, friction: 26, clamp: true },
+    config: customConfig.heavy,
     // config: { duration: 1000, easing: easings.easeCubic },
     initial: { opacity: 1, transform: 'translate3d(0%, 0, 0)', },
     from: { opacity: 1, transform: 'translate3d(-100%,0,0)', },
@@ -119,28 +120,33 @@ const App = () => {
   });
 
   const firstInputAnimation = useSpring({
-    config: { duration: 500 },
+    config: customConfig.heavy,
     background: state.index === 0 ? 'white' : 'rgba(0, 0, 0, 0.1)',
+    width: state.index === 0 ? '100%' : '0%'
   });
 
   const secondInputAnimation = useSpring({ 
-    config: { duration: 500 },
-    to: { background: state.index === 1 ? 'white': 'rgba(0, 0, 0, 0.1)' }
+    config: customConfig.heavy,
+    background: state.index === 1 ? 'white' : 'rgba(0, 0, 0, 0.1)',
+    width: state.index === 1 ? '100%' : '0%'
   });
 
   const thirdInputAnimation = useSpring({
-    config: { duration: 500 },
-    to: { background: state.index === 2 ? 'white' : 'rgba(0, 0, 0, 0.1)' }
+    config: customConfig.heavy,
+    background: state.index === 2 ? 'white' : 'rgba(0, 0, 0, 0.1)',
+    width: state.index === 2 ? '100%' : '0%'
   });
 
   const forthInputAnimation = useSpring({
-    config: { duration: 500 },
-    to: { background: state.index === 3 ? 'white' : 'rgba(0, 0, 0, 0.1)' }
+    config: customConfig.heavy,
+    background: state.index === 3 ? 'white' : 'rgba(0, 0, 0, 0.1)',
+    width: state.index === 3 ? '100%' : '0%'
   });
 
   const fifthInputAnimation = useSpring({
-    config: { duration: 500 },
-    to: { background: state.index === 4 ? 'white' : 'rgba(0, 0, 0, 0.1)' }
+    config: customConfig.heavy,
+    background: state.index === 4 ? 'white' : 'rgba(0, 0, 0, 0.1)',
+    width: state.index === 4 ? '100%' : '0%'
   });
 
   return (
@@ -157,35 +163,35 @@ const App = () => {
       <div className='courosel-inputs-container'>
         <div className='courosel-inputs'>
           <animated.div 
-            style={firstInputAnimation}
             className='courosel-input' 
             onClick={handleFirstItem}
-            value='first-input'
-          />
+          >
+            <animated.div style={firstInputAnimation} className='first-input-filling' />
+          </animated.div>
           <animated.div 
-            style={secondInputAnimation}
             className='courosel-input' 
             onClick={handleSecondItem} 
-            value='second-input'
-          />
+          >
+            <animated.div style={secondInputAnimation} className='second-input-filling' />
+          </animated.div>
           <animated.div 
-            style={thirdInputAnimation}
             className='courosel-input' 
             onClick={handleThirdItem} 
-            value='third-input'
-          />
+          >
+            <animated.div style={thirdInputAnimation} className='third-input-filling' />
+          </animated.div>
           <animated.div 
-            style={forthInputAnimation}
             className='courosel-input' 
             onClick={handleForthItem} 
-            value='forth-input'
-          />
+          >
+            <animated.div style={forthInputAnimation} className='forth-input-filling'/>
+          </animated.div>
           <animated.div 
-            style={fifthInputAnimation}
             className='courosel-input' 
             onClick={handleFifthItem} 
-            value='fifth-input'
-          />
+          >
+            <animated.div style={fifthInputAnimation} className='fifth-input-filling'/>
+          </animated.div>
         </div>
       </div>
     </Fragment>
