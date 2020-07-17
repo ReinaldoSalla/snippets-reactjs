@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BsLayoutTextSidebar } from 'react-icons/bs';
 import { animated } from 'react-spring';
 
-const TopbarSvg = styled(animated(BsLayoutTextSidebar))`
+const TopbarSvg = styled(BsLayoutTextSidebar)`
   color: white;
   font-size: 2.5em;
   transition: color 1000ms;
@@ -41,7 +41,7 @@ const TopbarNavigation = styled.nav`
 const AnimatedTopbarSvg = animated(TopbarSvg);
 
 export { 
-  TopbarSvg,
+  AnimatedTopbarSvg,
   TopbarListItem,
   TopbarList,
   TopbarNavigation 

@@ -14,7 +14,7 @@ const SidebarContainerTmp = styled.div`
   width: 200px;
   padding: 1em;
   position: fixed;
-  transform: translateY(70px);
+  margin-top: 50px;
 `;
 
 const SidebarContainer = animated(SidebarContainerTmp);

@@ -61,7 +61,8 @@ const App: FunctionComponent = (): JSX.Element => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       toggleSidebar()
-    }, 1500)
+    }, 500)
+    return () => clearInterval(intervalId);
   });
 
   return (

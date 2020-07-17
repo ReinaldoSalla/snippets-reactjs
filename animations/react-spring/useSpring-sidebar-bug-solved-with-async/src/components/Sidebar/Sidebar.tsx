@@ -105,9 +105,10 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
   isSidebarVisible
 }) => {
   const sidebarAnimation = useSpring({
-    marginLeft: isSidebarVisible ? '0px' : '-235px',
-    config: config.wobbly
-    // opacity: isSidebarVisible ? 1 : 0
+    from: { transform: 'translateX(100px)' },
+    to: async (next) => {
+      await next({ transform: isSidebarVisible ? 'translateX(500px)' : 'translateX(100px)' })
+    }
   });
   return (
     <SidebarContainer style={sidebarAnimation}>
