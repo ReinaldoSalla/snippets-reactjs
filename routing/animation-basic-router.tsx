@@ -4,7 +4,8 @@ import {
   Switch,
   Route,
   Link,
-  useLocation
+  useLocation,
+  useRouteMatch
 } from 'react-router-dom';
 import { useTransition, animated } from 'react-spring';
 import styled from 'styled-components';
@@ -24,14 +25,57 @@ const Wrapper = styled.div`
   }
 `;
 
+const HomePage: any = () => {
+  const { path } = useRouteMatch();
+  const location = useLocation();
+  const transition = useTransition(location, location => location.pathname, {
+    config: { duration: 1000 },
+    from: { opacity: 0, transform: 'translateX(-20%)', position: 'absolute' },
+    enter: { opacity: 1, transform: 'translateX(0%)' },
+    leave: { opacity: 0, transform: 'translateX(50%)' }
+  });
+  return transition.map(({ item: location, props, key }) => (
+    <animated.div key={key} style={props}>
+      <Switch location={location}>
+        <Route path={path} exact>
+          <Link to='/javascript'>
+            <Wrapper>
+              JavaScriptPage
+            </Wrapper>
+          </Link>
+          <Link to='/react'>
+            <Wrapper>
+              React
+            </Wrapper>
+          </Link>
+        </Route>
+        <Route path='/javascript'>
+          <JavaScriptPage />
+        </Route>
+        <Route path='/react'>
+          <ReactPage />
+        </Route> 
+      </Switch>
+    </animated.div>
+  ))
+}
+
+const JavaScriptPage = () => (
+  <h1>JavaScript</h1>
+);
+
+const ReactPage = () => (
+  <h1>react</h1>
+);
+
 const BaseLayout = () => (
   <Fragment>
-    <Wrapper>
-      JavaScript
-    </Wrapper>
-    <Wrapper>
-      React
-    </Wrapper>
+    <Link to='/'>
+      home
+    </Link>
+    <Route path='/'>
+      <HomePage />
+    </Route>
   </Fragment>
 )
 
