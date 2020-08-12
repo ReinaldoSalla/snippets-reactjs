@@ -1,3 +1,4 @@
+
 import React, { Fragment } from 'react';
 import {
   BrowserRouter,
@@ -7,7 +8,7 @@ import {
   useLocation,
   useRouteMatch
 } from 'react-router-dom';
-import { useTransition, animated, config } from 'react-spring';
+import { useTransition, animated, config, UseTransitionProps } from 'react-spring';
 import styled from 'styled-components';
 import { inspect } from '../../utils/inspect';
 
@@ -19,25 +20,28 @@ const Wrapper = styled.div`
   transition: transform 500ms;
   display: flex;
   justify-content: center;
-
   &:hover {
     transform: scale(1.2);
     cursor: pointer;
   }
 `;
 
-const HomePage = () => {
+const transitionProps: any = {
+  trail: 250,
+  from: { opacity: 0, transform: 'translateX(-20%)', position: 'absolute' },
+  enter: { opacity: 1, transform: 'translateX(0%)' },
+  leave: { opacity: 0, transform: 'translateX(50%)' },   
+}
+
+const HomePage: any = () => {
   const { path } = useRouteMatch();
   const location = useLocation();
-  let transition = useTransition(location, location => location.pathname, {
-    // config: { duration: 1500 },
-    trail: 250,
-    from: { opacity: 0, transform: 'translateX(-20%)', position: 'absolute' },
-    enter: { opacity: 1, transform: 'translateX(0%)' },
-    leave: { opacity: 0, transform: 'translateX(50%)' },   
-    order: ['leave', 'enter', 'update']
-  });
-  return transition.map(({ item: pathname, props, key }) => (
+  const transitions = useTransition(
+    location, 
+    location => location.pathname, 
+    { ...transitionProps, order: ['leave', 'enter', 'update'] }        
+  );
+  return transitions.map(({ item: pathname, props, key }) => (
     <animated.div key={key} style={props}>
       <Switch location={pathname}>
         <Route path={path} exact>
