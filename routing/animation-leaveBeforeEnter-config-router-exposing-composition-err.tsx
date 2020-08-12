@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   transition: transform 500ms;
   display: flex;
   justify-content: center;
+
   &:hover {
     transform: scale(1.2);
     cursor: pointer;
@@ -32,17 +33,59 @@ const transitionProps: any = {
   leave: { opacity: 0, transform: 'translateX(50%)' },   
 }
 
-const RoutesParser = (route) => {
-  // inspect({ route });
-  return (
-    <Route 
-      path={route.path}
-      render={props => (
-        <route.component {...props} routes={route.routes} />
-      )}
-    />
-  )
-};
+// const RouteWithSubRoutes = (route) => {
+//   return (
+//     <Route 
+//       path={route.path}
+//       render={props => (
+//         <route.component {...props} routes={route.routes} />
+//       )}
+//     />
+//   )
+// };
+
+// const RoutesParserItem = (route: any) => {
+//   console.log('2');
+//   return (
+//     <Route 
+//       path={route.path}
+//       render={props =>
+//         <route.component
+//           {...props}
+//           routes={route.routes}
+//         />
+//       }
+//     />
+//   )
+// }
+
+// const RoutesParser = () => {
+//   console.log('1');
+//   return (
+//     <Fragment>
+//       {routes.map((route: any, index) =>
+//         <RoutesParserItem key={index} { ...route } />
+//       )}
+//     </Fragment>
+//   );
+// }
+
+// const RoutesParser = () => {
+//   return (
+//     <div>
+//       {routes.map((route: any, index) => 
+//         <Route 
+//           key={index}
+//           path={route.path}
+//           render={props => (
+//             <route.component {...props} routes={route.routes} />
+//           )}
+//         />
+//       )}     
+//     </div>
+//   )
+// }
+
 
 const HomePage: any = () => {
   const { path } = useRouteMatch();
@@ -69,17 +112,35 @@ const HomePage: any = () => {
         </Route>
 
         {/* basic */}
-        <Route path='/javascript'>
+        {/* <Route path='/javascript'>
           <JavaScriptPage />
         </Route>
         <Route path='/react'>
           <ReactPage />
-        </Route> 
+        </Route>  */}
 
-        {/* config */ }
-        {/* {routes.map((route, index) => 
-          <RoutesParser key={index} {...route} />
-        )}         */}
+        {/* config working*/ }
+        {routes.map((route: any, index) => 
+          <Route 
+            key={index}
+            path={route.path}
+            render={props => 
+              <route.component 
+                {...props} 
+                routes={route.routes} 
+              />
+            }
+          />
+        )}        
+
+        {/* test react router docs example - has no animation for the return */}
+        {/* {routes.map((route, index) =>
+          <RouteWithSubRoutes key={index} {...route} />
+        )} */}
+
+
+        {/* test my component - infinite loop */}
+        {/* <RoutesParser/> */}
 
       </Switch>
     </animated.div>
@@ -112,7 +173,7 @@ const routes = [
   },
   {
     path: '/react',
-    component: React
+    component: ReactPage
   },
   {
     path: '/',
