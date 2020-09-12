@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "airbnb-typescript-prettier"
+  ],
+  "rules": {
+    "func-style": ["error", "expression"]
+  }
+}
