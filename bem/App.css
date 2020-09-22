@@ -1,0 +1,39 @@
+
+:root, html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  padding: 0;
+  margin:0;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  width: 500px;
+  border: 1px solid red;
+  animation: 1000ms ease-in fade-in;
+  transition: 1000ms ease-in-out;
+}
+
+.banner--active {
+  margin-left: 500px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.banner__title {
+  border: 1px solid black;
+}
