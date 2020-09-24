@@ -1,0 +1,32 @@
+.footer {
+  margin-top: 2rem;
+  width: 100%;
+  height: calc(100% - var(--topbar-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: var(--bg-color);
+}
+
+.footer-link {
+  font-size: 32px;
+  color: white;
+}
+
+.footer-msg, .footer-msg-italic {
+  margin: 0 1rem;
+  font-size: 32px;
+  text-align: center;
+  color: white;
+}
+
+.footer-msg-italic {
+  font-style: italic;
+}
+
+@media only screen and (max-width: 576px) {
+  .footer-link, .footer-msg, .footer-msg-italic {
+    font-size: 24px;
+  }
+}
