@@ -1,0 +1,16 @@
+box-sizing
+display
+justify-content
+align-items
+position
+z-index
+padding
+margin
+width
+height
+font-size
+line-height
+color
+background
+border
+border-radius
