@@ -1,8 +1,3 @@
-/*
-reverse a transition
-https://codesandbox.io/s/react-spring-reverse-transition-3e9ut?file=/src/App.js
-*/
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useSpring, useTransition, useChain } from 'react-spring';
 import { 
