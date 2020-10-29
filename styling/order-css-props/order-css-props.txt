@@ -3,6 +3,7 @@ display
 justify-content
 align-items
 position
+top
 z-index
 padding
 margin
