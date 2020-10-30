@@ -18,3 +18,5 @@ overflow
 color
 opacity
 background
+cursor
+pointer-events
