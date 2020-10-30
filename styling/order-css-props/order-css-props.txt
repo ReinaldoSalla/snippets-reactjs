@@ -20,3 +20,5 @@ opacity
 background
 cursor
 pointer-events
+transition
+animation
