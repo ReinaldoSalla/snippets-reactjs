@@ -5,6 +5,9 @@ align-items
 position
 top
 z-index
+color
+opacity
+background
 font-size
 line-height
 width
@@ -14,7 +17,4 @@ margin
 border
 border-radius
 transform
-color
-opacity
-background
 overflow
