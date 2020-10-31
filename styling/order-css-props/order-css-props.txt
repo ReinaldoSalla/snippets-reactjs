@@ -2,9 +2,11 @@ box-sizing
 display
 justify-content
 align-items
+flex
 position
 top
 z-index
+font-family
 font-size
 line-height
 text-align
