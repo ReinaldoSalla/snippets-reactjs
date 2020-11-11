@@ -1,0 +1,10 @@
+:root {
+  --topbar-height: 80px;
+
+  --bg-color: #280808;
+  --bg-second-color: #f2f2f2;
+  --hover-color: #c41010;
+  --font-color: #590b0b;
+
+  --Carousel-animation-duration: 2500ms;
+}
