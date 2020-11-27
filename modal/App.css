@@ -1,0 +1,63 @@
+.app {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid yellow;
+}
+
+.app__left-button {
+  position: absolute;
+  left: 0;
+}
+
+.app__right-button {
+  position: absolute;
+  right: 0;
+}
+
+.app__left-modal {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  width: 100px;
+  height: 100px;
+  transform: translateX(-100%);
+  background: lightgreen;
+  transition: transform 0.5s;
+}
+
+.app__left-modal--visible {
+  transform: translateX(0);
+}
+
+.app__right-modal {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  width: 100px;
+  height: 100px;
+  transform: translateX(100%);
+  background: lightblue;
+  transition: transform 0.5s;
+}
+
+.app__right-modal--visible {
+  transform: translateX(0);
+}
+
+.app__box-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.app__box {
+  height: 500px;
+  width: 300px;
+  background: lightpink;
+  cursor: pointer;
+  transition: opacity 0.5s;
+}
+
+.app__box--disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
